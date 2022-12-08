@@ -1,12 +1,11 @@
-/*Williams kod*/
-function resolvePromise(promiseToResolve, promiseState, notify){
+javascript function resolvePromise(promiseToResolve, promiseState, notify){
     if (promiseToResolve === null){ return; }
     promiseState.promise=promiseToResolve;
     promiseState.data= null;         
     promiseState.error= null;
     if(notify) { notify(); }
     function saveDataACB(result){ 
-	    if (promiseState.promise !== promiseToResolve){ return; }
+        if (promiseState.promise !== promiseToResolve){ return; }
         promiseState.data= result;
         if(notify) { notify(); }
     } 
@@ -18,4 +17,4 @@ function resolvePromise(promiseToResolve, promiseState, notify){
     promiseToResolve.then(saveDataACB).catch(saveErrorACB);
 }
 
-export default resolvePromise;
+export default resolvePromise; 

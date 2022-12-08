@@ -1,23 +1,33 @@
 
-//const currencySource ={
-
-    function apiCall(params) {
+const  DishSource={   // JS object creation literal
+    /*apiCall(params) {
         return fetch(BASE_URL+params, {
             "method": "GET",              // HTTP method
             "headers": {                  // HTTP headers
                 'X-Mashape-Key' : API_KEY,
-                "x-rapidapi-host": "v6.exchangerate-api.com/v6/08f84c6fc378e03c6ea34345/enriched/",   /*Addresserna ska ändras*/
+                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+            }
+        })
+        // from HTTP response headers to HTTP response data
+        .then(response => response.json())   ;
+    }
+    ,*/   // comma between object entries
+   
+    apiCall(params) {
+        return fetch(BASE_URL+params, {
+            "method": "GET",              // HTTP method
+            "headers": {                  // HTTP headers
+                'X-Mashape-Key' : API_KEY,
+                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
             }
         })
         // check HTTP response: 
         .then(response=> {if (response.ok) {return response}
         else {throw response.statusText}})
         .then(response => response.json());
-    }
-        function searchCurrency(params) {return apiCall("v6/08f84c6fc378e03c6ea34345/enriched" + new URLSearchParams(params)).then(data=> data.results) }
-        function getCurrencyValues(id) {return apiCall("currencyModel.mainCurrency" + id + "conversion_rate" );}
+    },
 
-
-    /*    "v6.exchangerate-api.com/v6/08f84c6fc378e03c6ea34345/enriched/" + currency.id */
-//};
-export {getCurrencyValues, searchCurrency};
+    searchDishes(params){ return DishSource.apiCall("recipes/search?" + new URLSearchParams(params)).then(data=> data.results) }
+    ,   
+    getDishDetails(id){ return DishSource.apiCall("recipes/" + id + "/information");}
+};
