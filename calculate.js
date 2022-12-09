@@ -1,8 +1,8 @@
 
-const first_currency = document.getElementById('currency-one');
-const second_currency = document.getElementById('currency-two');
-const first_amount = document.getElementById('amount-one');
-const second_amount = document.getElementById('amount-two');
+const firstCurrency = document.getElementById('currency-one');
+const secondCurrency = document.getElementById('currency-two');
+const firstAmount = document.getElementById('amount-one');
+const secondAmount = document.getElementById('amount-two');
 
 const rateElement = document.getElementById('rate');
 const swap = document.getElementById('swap');
@@ -10,17 +10,17 @@ const swap = document.getElementById('swap');
 // Fetchar exchange rates
 function calculate() {
     
-    const currency_one = first_currency.value;
-    const currency_two = second_currency.value;
+    const currencyOne = firstCurrency.value;
+    const currencyTwo = secondCurrency.value;
   
     fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currency_one}`)
       .then((res) => res.json())
       .then((data) => {
         
-        const rate = data.conversion_rates[currency_two];
-        rateElement.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;   //Fetching for 1 SEK is in EUR
+        const rate = data.conversion_rates[currencyTwo];
+        rateElement.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;   //Fetching for 1 SEK is in EUR
   
-        second_amount.value = (first_amount.value * rate).toFixed(2);
+        secondAmount.value = (firstAmount.value * rate).toFixed(2);
       });
   }
 
@@ -31,8 +31,8 @@ second_currency.addEventListener('change', calculate);
 second_amount.addEventListener('input', calculate);
 
 swap.addEventListener('click', () => {
-  const temp = first_currency.value;
-  first_currency.value = second_currency.value;
+  const temp = firstCurrency.value;
+  first_currency.value = secondCurrency.value;
   second_currency.value = temp;
   calculate();
 });
