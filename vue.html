@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/views/summaryView.js" type="text/jsx"></script>
+    <script src="js/views/sidebarView.js" type="text/jsx"></script>
+    <script src="js/views/searchView.js" type="text/jsx"></script>
+    <script src="js/views/promiseNoData.js" type="text/jsx"></script>
+    <script src="js/views/detailsView.js" type="text/jsx"></script>
+    <script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
+    <script src="vuejs/sidebarPresenter.js" type="text/jsx"></script>
+    <script type=text/jsx src="js/app.js"></script>
+    <script src="js/DinnerModel.js"></script>
+    <script src="js/apiConfig.js"></script>
+    <script src="js/dishSource.js"></script>
+    <script>
+			// Babel generates calls to React.createElement by default, so we redefine that:
+			const React={createElement:Vue.h};
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+<script type="text/jsx">
+
+
+
+
+            const myModel=new DinnerModel(3);
+            const TopLevelModel= {
+                        data(){ return  {model: myModel}; },
+                        render(){  return <App model={ this.model } />; }
+                    };/* as before, but using myModel */ ;
+
+            Promise.all(
+                 [DishSource.getDishDetails(523145),
+                 DishSource.getDishDetails(787321),
+                 DishSource.getDishDetails(452179)]
+            ).then(function(values){
+                   values.map(d=>myModel.addToMenu(d));   // add the dishes to the model
+                   Vue.render(<TopLevelModel />, document.getElementById("app"));
+                  }); 
+   /* Vue.render(promiseNoData(null), document.getElementById("app"))
+    Vue.render(promiseNoData("a promise", undefined, null), document.getElementById("app"))
+    Vue.render(promiseNoData("promise", null, "some error"),document.getElementById("app"))
+    Vue.render(promiseNoData("promise", "some data", null)||<div>Hello world</div>, document.getElementById("app")) */
+
+</script>
+</html>
