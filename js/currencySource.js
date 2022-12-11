@@ -6,15 +6,9 @@ const secondAmount = document.getElementById('amount-two');
 const rateElement = document.getElementById('rate');
 const swap = document.getElementById('swap');
 
-const CurrencySource={
-    apiCall(params) {
-		return fetch(BASE_URL+params, {
-            "method": "GET",              // HTTP method
-            "headers": {                  // HTTP headers
-				'X-Mashape-Key' : API_KEY,
-				"x-rapidapi-host": "https://v6.exchangerate-api.com",
-			}
-		})
+/*const CurrencySource={
+    apiCall() {
+		return fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currency_one}`)
 		// check HTTP response: 
 		.then(response=> {if (response.ok) {return response}
 		else {throw response.statusText}})
@@ -36,30 +30,35 @@ const CurrencySource={
     }*/
 
     // Fetchar exchange rates
-    calculate(){
+    function calculate() {
+    
         const currencyOne = firstCurrency.value;
         const currencyTwo = secondCurrency.value;
-
-        return currencySource.apiCall("v6/40bf2a1c2fcc5b9fb3cfd361/latest/" + currencyOne)
-        .then((res) => res.json())
-        .then((data) => {
+      
+        fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currencyOne}`)
+          .then((res) => res.json())
+          .then((data) => {
+            
             const rate = data.conversion_rates[currencyTwo];
             rateElement.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;   //Fetching for 1 SEK is in EUR
-            
+      
             secondAmount.value = (firstAmount.value * rate).toFixed(2);
-        });
-    }
-}
+          });
+      }
 
 // Event Listeners
-firstCurrency.addEventListener('change', calculate());
-firstAmount.addEventListener('input', apiCall);
-secondCurrency.addEventListener('change', apiCall);
-secondAmount.addEventListener('input', apiCall);
+firstCurrency.addEventListener('change', calculate);
+firstAmount.addEventListener('input', calculate);
+secondCurrency.addEventListener('change', calculate);
+secondAmount.addEventListener('input', calculate);
 
-/*swap.addEventListener('click', () => {
-const temp = firstCurrency.value;
-first_currency.value = secondCurrency.value;
-second_currency.value = temp;
-apiCall();
-});*/
+
+
+swap.addEventListener('click', () => {
+    const temp = firstCurrency.value;
+    first_currency.value = secondCurrency.value;
+    second_currency.value = temp;
+    calculate();
+  });
+  
+  calculate();
