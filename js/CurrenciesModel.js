@@ -32,7 +32,7 @@ class CurrenciesModel {
         this.notifyObservers();
     }
 
-    setFirstAmount(amount) {
+    setFirstAmount(currency) {
         this.firstCurrency = currency;
         this.notifyObservers();
     }
