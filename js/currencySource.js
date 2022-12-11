@@ -16,14 +16,14 @@ const swap = document.getElementById('swap');
     },
     // Fetchar exchange rates
     /*function apiCall() {
-        const currencyOne = this.firstCurrency.value;
-        const currencyTwo = this.secondCurrency.value;
+        const currOne = this.firstCurrency.value;
+        const currTwo = this.secondCurrency.value;
         
         fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currency_one}`)
         .then((res) => res.json())
         .then((data) => {
-            const rate = data.conversion_rates[currencyTwo];
-            rateElement.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;   //Fetching for 1 SEK is in EUR
+            const rate = data.conversion_rates[currTwo];
+            rateElement.innerText = `1 ${currOne} = ${rate} ${currTwo}`;   //Fetching for 1 SEK is in EUR
             
             secondAmount.value = (firstAmount.value * rate).toFixed(2);
         });
@@ -32,15 +32,15 @@ const swap = document.getElementById('swap');
     // Fetchar exchange rates
     function calculate() {
     
-        const currencyOne = firstCurrency.value;
-        const currencyTwo = secondCurrency.value;
+        const currOne = firstCurrency.value;
+        const currTwo = secondCurrency.value;
       
-        fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currencyOne}`)
-          .then((res) => res.json())
+        fetch(`https://v6.exchangerate-api.com/v6/40bf2a1c2fcc5b9fb3cfd361/latest/${currOne}`)
+          .then((response) => response.json())
           .then((data) => {
             
-            const rate = data.conversion_rates[currencyTwo];
-            rateElement.innerText = `1 ${currencyOne} = ${rate} ${currencyTwo}`;   //Fetching for 1 SEK is in EUR
+            const rate = data.conversion_rates[currTwo];
+            rateElement.innerText = `1 ${currOne} = ${rate} ${currTwo}`;   // This makes it able for us to show for ex. how much 1 SEK is in EUR.
       
             secondAmount.value = (firstAmount.value * rate).toFixed(2);
           });
@@ -53,10 +53,10 @@ secondCurrency.addEventListener('change', calculate);
 secondAmount.addEventListener('input', calculate);
 
 swap.addEventListener('click', () => {
-const temp = firstCurrency.value;
-firstCurrency.value = secondCurrency.value;
-secondCurrency.value = temp;
-apiCall();
-});
-
-calculate();
+    const temp = firstCurrency.value;
+    firstCurrency.value = secondCurrency.value;
+    secondCurrency.value = temp;
+    calculate();
+  });
+  
+  calculate();
