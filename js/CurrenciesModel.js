@@ -1,4 +1,4 @@
-class DinnerModel {
+class CurrenciesModel {
 	constructor() {
         this.observers = [];
 		this.firstCurrency = document.getElementById('currency-one');
@@ -41,4 +41,12 @@ class DinnerModel {
         this.firstAmount = currency;
         this.notifyObservers();
     }
+
+    swap() {
+        const temp = this.firstCurrency.value;
+        firstCurrency.value = secondCurrency.value;
+        secondCurrency.value = temp;
+        CurrencySource.calculate();
+        this.notifyObservers()
+    };
 }
