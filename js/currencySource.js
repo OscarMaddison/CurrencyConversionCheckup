@@ -40,7 +40,7 @@ const CurrencySource={
         const currencyOne = firstCurrency.value;
         const currencyTwo = secondCurrency.value;
 
-        return currencySource.apiCall("v6/40bf2a1c2fcc5b9fb3cfd361/latest/" + currencyOne)
+        return apiCall("v6/40bf2a1c2fcc5b9fb3cfd361/latest/" + currencyOne)
         .then((res) => res.json())
         .then((data) => {
             const rate = data.conversion_rates[currencyTwo];
@@ -52,14 +52,16 @@ const CurrencySource={
 }
 
 // Event Listeners
-firstCurrency.addEventListener('change', calculate());
-firstAmount.addEventListener('input', apiCall);
-secondCurrency.addEventListener('change', apiCall);
-secondAmount.addEventListener('input', apiCall);
+firstCurrency.addEventListener('change', calculate);
+firstAmount.addEventListener('input', calculate);
+secondCurrency.addEventListener('change', calculate);
+secondAmount.addEventListener('input', calculate);
 
-/*swap.addEventListener('click', () => {
+swap.addEventListener('click', () => {
 const temp = firstCurrency.value;
 first_currency.value = secondCurrency.value;
 second_currency.value = temp;
 apiCall();
-});*/
+});
+
+calculate();

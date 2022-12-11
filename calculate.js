@@ -1,5 +1,4 @@
-
-const firstCurrency = document.getElementById('currency-one');
+/*const firstCurrency = document.getElementById('currency-one');
 const secondCurrency = document.getElementById('currency-two');
 const firstAmount = document.getElementById('amount-one');
 const secondAmount = document.getElementById('amount-two');
@@ -37,4 +36,4 @@ swap.addEventListener('click', () => {
   calculate();
 });
 
-calculate();
+calculate();*/
