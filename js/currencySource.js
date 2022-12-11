@@ -4,7 +4,7 @@ const firstAmount = document.getElementById('amount-one');
 const secondAmount = document.getElementById('amount-two');
 
 const rateElement = document.getElementById('rate');
-const swap = document.getElementById('swap');
+const swapCurrencies = document.getElementById('swap');
 
 /*const CurrencySource={
     apiCall() {
@@ -52,7 +52,7 @@ firstAmount.addEventListener('input', calculate);
 secondCurrency.addEventListener('change', calculate);
 secondAmount.addEventListener('input', calculate);
 
-swap.addEventListener('click', () => {
+swapCurrencies.addEventListener('click', () => {
     const temp = firstCurrency.value;
     firstCurrency.value = secondCurrency.value;
     secondCurrency.value = temp;
