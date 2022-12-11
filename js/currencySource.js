@@ -52,7 +52,6 @@ const CurrencySource={
 }
 
 // Event Listeners
-<<<<<<< Updated upstream
 firstCurrency.addEventListener('change', calculate);
 firstAmount.addEventListener('input', calculate);
 secondCurrency.addEventListener('change', calculate);
@@ -66,18 +65,3 @@ apiCall();
 });
 
 calculate();
-=======
-firstCurrency.addEventListener('change', calculate());
-firstAmount.addEventListener('input', calculate());
-secondCurrency.addEventListener('change', calculate());
-secondAmount.addEventListener('input', calculate());
-
-swap.addEventListener('click', () => {
-    const temp = firstCurrency.value;
-    first_currency.value = secondCurrency.value;
-    second_currency.value = temp;
-    apiCall();
-});
-
-//calculate();
->>>>>>> Stashed changes
