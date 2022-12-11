@@ -42,11 +42,5 @@ class CurrenciesModel {
         this.notifyObservers();
     }
 
-    swap() {
-        const temp = this.firstCurrency.value;
-        firstCurrency.value = secondCurrency.value;
-        secondCurrency.value = temp;
-        CurrencySource.calculate();
-        this.notifyObservers()
-    };
+
 }
