@@ -59,8 +59,8 @@ secondAmount.addEventListener('input', calculate);
 
 swap.addEventListener('click', () => {
 const temp = firstCurrency.value;
-first_currency.value = secondCurrency.value;
-second_currency.value = temp;
+firstCurrency.value = secondCurrency.value;
+secondCurrency.value = temp;
 apiCall();
 });
 
