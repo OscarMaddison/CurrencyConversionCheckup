@@ -1,12 +1,13 @@
-/*const REF= "dinnerModel"+56 ; //  56 is your TW2_TW3 group number
+const REF= "currenciesModel"+31 ; //  56 is your TW2_TW3 group number
 function persistModel(model) {
 	let loadingFromFirebase = false;  // boolean flag, used in a JS closure
 	model.addObserver(function () {
 		if (loadingFromFirebase === true) return;
          	firebase.database().ref(REF).set({  // object literal
-			guests: model.numberOfGuests,
-			dishes: model.dishes,
-            currentDish: model.currentDish
+			firstCurrency: model.firstCurrency,
+			secondCurrency: model.secondCurrency,
+			firstAmount: model.firstAmount,
+			secondAmount: model.secondAmount
 		});
     });
 	firebase.database().ref(REF).on("value", function (data) {
@@ -24,4 +25,3 @@ function persistModel(model) {
 	});
 
 }
-*/
