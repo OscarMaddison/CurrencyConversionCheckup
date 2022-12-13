@@ -142,4 +142,68 @@
 	  <script src="js/firebaseConfig.js"></script>
 	  <script src="js/firebaseModel.js"></script>
   </body>
+
+  <script type="text/jsx">
+
+		const firstCurrency = 'SEK';
+    const secondCurrency = 'DKK';
+    const firstValue = 1;
+    const secondValue = 0.69;
+
+
+		const myModel= new CurrenciesModel();
+		persistModel(myModel);
+		Promise.all(
+			[CurrencySource.calculate()]
+		).then(function(values){
+			/*values.map(d=>myModel.addToMenu(d));   // add the dishes to the model*/
+			ReactDOM.render(<App model={myModel}/>, document.getElementById("app"));
+		});
+
+
+		/*function ReactSidebarLocalState(){
+			const [num, setNumber]= React.useState(2);
+			<SidebarView guests={num}
+			setGuests={x=> setNumber(x)} />;	//?
+		}*/
+		//ReactDOM.render(<ReactSidebarLocalState />,document.getElementById("app"));
+
+		/*function RenderTest(){ console.log("React sub-component render test"); return false; }
+		function ReactTopLevelNumber(){
+			const [num, setNumber]= React.useState(2);
+			return (
+				<div>
+					<SidebarView guests={num} setGuests={setNumber} />
+					<SummaryView persons = {num} />
+					<RenderTest />
+				</div>
+			);
+		}*/
+
+		const searchPromise= DishSource.searchDishes({type:"main course", query:"pasta" });
+		function SearchTest(){
+			const [data, setData]=React.useState(null);
+			const [error, setError]=React.useState(null);
+			React.useEffect(function(){
+				searchPromise.then(dt=>setData(dt))
+				.catch(er=> setError(er))
+			}, []);
+			return  promiseNoData(searchPromise, data, error) || <SearchResultsView searchResults={data}  dishChosen={console.log}/>
+		}
+		const detailsPromise= DishSource.getDishDetails(523145);
+
+		function DetailsTest(){
+			const [data, setData]=React.useState(null);
+			const [error, setError]=React.useState(null);
+			React.useEffect(function(){
+				detailsPromise
+				.then((data)=> setData(data))
+				.catch((error)=> setError(error))
+			}, []);
+			return  promiseNoData(detailsPromise, data, error) || <DetailsView dish={data} people={4} isDishInMenu={true} dishAdded={console.log}/>
+		}
+
+		ReactDOM.render(<div><SearchTest /><DetailsTest/></div>, document.getElementById("app"))
+	
+	</script>
 </html>
