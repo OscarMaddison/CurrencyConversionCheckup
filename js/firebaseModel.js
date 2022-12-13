@@ -14,9 +14,10 @@ function persistModel(model) {
 		 loadingFromFirebase = true;
 		try {
 			if (data.val()) {
-				model.setNumberOfGuests(data.val().guests);
-				model.setDishes(data.val().dishes || []);
-				model.setCurrentDish(data.val().currentDish || null);
+				model.setFirstCurrency(data.val().firstCurrency);
+				model.setSecondCurrency(data.val().secondCurrency);
+				model.setFirstAmount(data.val().firstAmount || null);
+				model.setSecondAmount(data.val().secondAmount || null);
 			}
 		}
 		catch (e) { console.log(e); }
