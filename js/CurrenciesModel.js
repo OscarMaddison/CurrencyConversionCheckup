@@ -28,17 +28,17 @@ class CurrenciesModel {
     }
 
     setSecondCurrency(currency) {
-        this.firstCurrency = currency;
+        this.secondCurrency = currency;
         this.notifyObservers();
     }
 
-    setFirstAmount(currency) {
-        this.firstCurrency = currency;
+    setFirstAmount(amount) {
+        this.firstAmount = amount;
         this.notifyObservers();
     }
 
-    setSecondAmount(currency) {
-        this.firstAmount = currency;
+    setSecondAmount(amount) {
+        this.secondAmount = amount;
         this.notifyObservers();
     }
 

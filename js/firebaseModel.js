@@ -1,6 +1,3 @@
-import { getDatabase, ref, set, get, child, push, onValue, onChildAdded, onChildChanged, onChildRemoved, } from "firebase/database";
-const db = getDatabase();
-
 const REF= "currenciesModel"+31 ; //  56 is your TW2_TW3 group number
 function persistModel(model) {
 	let loadingFromFirebase = false;  // boolean flag, used in a JS closure
@@ -13,7 +10,7 @@ function persistModel(model) {
 			secondAmount: model.secondAmount
 		});
     });
-	firebase.database().ref(REF).on("value", function (data) {
+	firebase.database().ref(REF).on("input", function (data) {
 		 loadingFromFirebase = true;
 		try {
 			if (data.val()) {
