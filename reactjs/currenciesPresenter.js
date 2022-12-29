@@ -10,6 +10,8 @@ function CurrenciesPresenter(props){   // assume a model prop
         return function(){ props.model.removeObserver(obs);}        // 2.unsubscribe
     }, [])                                            //  stricter: [props.model] !                                             //  stricter: [props.model] !
 
+    console.log('presenter function reached')
+
     return <CurrenciesView
         firstCurrency={props.model.firstCurrency}
         secondCurrency={props.model.secondCurrency}

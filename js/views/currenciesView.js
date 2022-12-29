@@ -1,6 +1,7 @@
 function CurrenciesView(props){ console.log(props);
+    console.log('view function reached');
 	return (
-		<div class="container">
+		<div>
 			<div class="currency">
                 <input type="number" id="amount-one" placeholder="0" onChange={ event=> {
                     props.setFirstAmount(placeholder);

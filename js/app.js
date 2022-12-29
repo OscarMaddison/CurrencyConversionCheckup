@@ -2,6 +2,7 @@ function RenderTest(){ console.log("Vue sub-component render test"); return fals
 const App= (props)=>
 
     <div class="flexParent">
+        console.log('app.js rad 5');
         <div class="currencies"><Show hash="#currencies"><CurrenciesPresenter model={props.model} /></Show></div>
     </div>
 

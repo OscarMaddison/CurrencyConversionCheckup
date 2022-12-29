@@ -148,6 +148,21 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   </body>-->
   <body>
+    <div class="rate" id="rate"></div>
+    <script src="js/CurrenciesModel.js"></script>
+	  <script src="js/apiConfig.js"></script>
+    <script src="js/currencySource.js"></script>
+    <script src="js/views/currenciesView.js"></script>
+    <script src="reactjs/currenciesPresenter.js"></script>
+    <script src="reactjs/exchangeRatePresenter.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+	  <script src="js/firebaseConfig.js"></script>
+	  <script src="js/firebaseModel.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    
 		<div id="app"></div>
 	</body>
   <script type="text/js">
@@ -169,6 +184,7 @@
       currencySource.firstAmount.addEventListener('input', calculate);,
 			currencySource.secondCurrency.addEventListener('change', calculate);,
       currencySource.secondAmount.addEventListener('input', calculate);
+      console.log('react.html rad 172');
 			ReactDOM.render(<App model={myModel}/>, document.getElementById("app"));
       //ReactDOM.render(currenciesView)
 		});
