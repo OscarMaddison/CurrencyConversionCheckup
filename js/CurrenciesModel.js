@@ -25,22 +25,40 @@ class CurrenciesModel {
     setFirstCurrency(currency) {
         this.firstCurrency = currency;
         this.notifyObservers();
+        console.log("First currency set: ", currency);
     }
 
     setSecondCurrency(currency) {
         this.secondCurrency = currency;
         this.notifyObservers();
+        console.log("Second currency set: ", currency);
     }
 
     setFirstAmount(amount) {
         this.firstAmount = amount;
         this.notifyObservers();
+        console.log("First amount set: ", amount);
     }
 
     setSecondAmount(amount) {
         this.secondAmount = amount;
         this.notifyObservers();
+        console.log("Second amount set: ", amount);
     }
 
+    swapCurrencies() {
+        const temp = this.firstCurrency;
+        this.setFirstCurrency(this.secondCurrency);
+        this.setSecondCurrency(temp);
+    }
 
+    swapAmounts() {
+        const temp = this.firstAmount;
+        this.setFirstAmount(this.secondAmount);
+        this.setSecondAmount(temp);
+    }
+
+    calculate() {
+        CurrencySource.calculate();
+    }
 }
