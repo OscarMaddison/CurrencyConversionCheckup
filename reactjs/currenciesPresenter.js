@@ -12,17 +12,20 @@ function CurrenciesPresenter(props){   // assume a model prop
 
     console.log('presenter function reached')
 
-    return <CurrenciesView
-        firstCurrency={props.model.firstCurrency}
-        secondCurrency={props.model.secondCurrency}
-        firstAmount={pros.model.firstAmount}
-        secondAmount={props.model.secondAmount}
-        setFirstCurrency={x => props.model.setFirstCurrency(x)}
-        setSecondCurrency={x => props.model.setSecondCurrency(x)}
-        setFirstAmount={x => props.model.setFirstAmount(x)}
-        setSecondAmount={x => props.model.setSecondAmount(x)}
-        swapCurrencies={() => props.model.swapCurrencies()}
-        swapAmounts={() => props.model.swapAmounts()}
-        calculate={() =>props.model.calculate()}
-    />
+    /*return (
+        <CurrenciesView
+            firstCurrency={props.model.firstCurrency}
+            secondCurrency={props.model.secondCurrency}
+            firstAmount={pros.model.firstAmount}
+            secondAmount={props.model.secondAmount}
+            setFirstCurrency={x => props.model.setFirstCurrency(x)}
+            setSecondCurrency={x => props.model.setSecondCurrency(x)}
+            setFirstAmount={x => props.model.setFirstAmount(x)}
+            setSecondAmount={x => props.model.setSecondAmount(x)}
+            swapCurrencies={() => props.model.swapCurrencies()}
+            swapAmounts={() => props.model.swapAmounts()}
+            calculate={() =>props.model.calculate()}
+        />
+    )*/
+    return
 }

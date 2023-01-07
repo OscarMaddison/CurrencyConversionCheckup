@@ -1,8 +1,8 @@
-function CurrenciesView(props){ console.log(props);
-    console.log('view function reached');
-	return (
-		<div>
-			<div class="currency">
+function CurrenciesView(props){ //console.log(props);
+    //<head>view function reached</head>
+	/*return (
+		<Container className="currency container">
+			<div className="currency">
                 <input type="number" id="amount-one" placeholder="0" onChange={ event=> {
                     props.setFirstAmount(placeholder);
                     props.calculate();
@@ -136,6 +136,7 @@ function CurrenciesView(props){ console.log(props);
             <div>
                 This is from currencyView
             </div>
-        </div>
-	);
+        </Container>
+	);*/
+    return
 }

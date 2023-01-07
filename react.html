@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <div class="rate" id="rate"></div>
+    <script src="js/CurrenciesModel.js"></script>
+	  <script src="js/apiConfig.js"></script>
+    <script src="js/currencySource.js"></script>
+    <script src="js/views/currenciesView.js"></script>
+    <script src="js/views/graphView.js"></script>
+    <script src="reactjs/currenciesPresenter.js"></script>
+    <script src="reactjs/graphPresenter.js"></script>
+    <script src="reactjs/exchangeRatePresenter.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+	  <script src="js/firebaseConfig.js"></script>
+	  <script src="js/firebaseModel.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    
     <meta charset="UTF-8" />
     <title>Currency Conversion Checkup</title>
     <link rel="stylingsheet" href="style.css" />
@@ -148,20 +165,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   </body>-->
   <body>
-    <div class="rate" id="rate"></div>
-    <script src="js/CurrenciesModel.js"></script>
-	  <script src="js/apiConfig.js"></script>
-    <script src="js/currencySource.js"></script>
-    <script src="js/views/currenciesView.js"></script>
-    <script src="reactjs/currenciesPresenter.js"></script>
-    <script src="reactjs/exchangeRatePresenter.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
-	  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
-	  <script src="js/firebaseConfig.js"></script>
-	  <script src="js/firebaseModel.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <h1>Currency Conversion Checkup</h1>
     
 		<div id="app"></div>
 	</body>
@@ -171,6 +175,7 @@
     const secondCurrency;
     const firstAmount;
     const secondAmount;
+    console.log('react.html rad 174');
 
 		const myModel= new CurrenciesModel();
 		persistModel(myModel);
@@ -179,18 +184,18 @@
       currencySource.secondCurrency.value,
       currencySource.firstAmount.value,
       currencySource.secondAmount.value]
-		).then(function(){
+    ).then(function(){
       currencySource.firstCurrency.addEventListener('change', calculate);,
       currencySource.firstAmount.addEventListener('input', calculate);,
-			currencySource.secondCurrency.addEventListener('change', calculate);,
+      currencySource.secondCurrency.addEventListener('change', calculate);,
       currencySource.secondAmount.addEventListener('input', calculate);
-      console.log('react.html rad 172');
-			ReactDOM.render(<App model={myModel}/>, document.getElementById("app"));
+      console.log('react.html rad 188');
+      ReactDOM.render(<App model={myModel}/>, document.getElementById("app"));
       //ReactDOM.render(currenciesView)
-		});
+    });
 
 
-		//ReactDOM.render(document.getElementById("app"))
+    //ReactDOM.render(document.getElementById("app"))
     //ReactDOM.render(currenciesView)
 	
 	</script>
