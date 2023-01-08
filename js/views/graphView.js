@@ -1,6 +1,6 @@
 //import { Line } from "react-chartjs-2";
 
-function CurrenciesView(props){ //console.log(props);
+function GraphView(props){ //console.log(props);
     //<head>test graph</head>
 	return (
         Graph = () => {
