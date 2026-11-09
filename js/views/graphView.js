@@ -1,4 +1,4 @@
-//import { Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 function GraphView(props){ //console.log(props);
     //<head>test graph</head>
@@ -28,6 +28,12 @@ function GraphView(props){ //console.log(props);
                     />
                 </div>
             )
+            /*return (
+                "<div className=\"Graph\">\n\"testing\"\n</div>"
+            )*/
         }
+        /*<div className="Graph">
+            "testing"
+        </div>*/
     )
 }
